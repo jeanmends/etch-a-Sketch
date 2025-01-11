@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#parent{
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que as divs se quebrem para novas linhas */
+    width: 600px;    /* Tamanho fixo da div principal */
+    height: 600px;   /* Tamanho fixo da div principal */
+    gap: 0; 
+}
+
+.child{
+
+border: 1px solid black;
+}
+
+button{
+    margin: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgb(141, 27, 207);
+    border: 5px solid rgb(0, 89, 255);
+    font-weight: bolder;
+
+}
