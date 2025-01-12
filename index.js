@@ -1,4 +1,4 @@
-function chageGrind(value){
+function chageGrind(value = 16, type ='oneColor'){
     const parent = document.querySelector('#parent');
     parent.innerHTML = '';
     const totalDivs = value * value; // Número total de divs
@@ -27,32 +27,59 @@ children.forEach(child => {
   child.style.width = `${size}px`;
   child.style.height = `${size}px`;
 });
-
-children.forEach(child =>{
-    child.addEventListener("mousemove", () =>{
-        let r,g,b;
-        r = randomColor();
-        g = randomColor();
-        b = randomColor();
-        child.style.backgroundColor = `rgb(${r},${g},${b})`;
-    })
-})
+/*
+if (type == 'oneColor'){
+    oneColorVersion(children);
+}else{
+    colorVersion(children);
 }
 
+*/
+oneColorVersion(children);
+}
+
+      
+
+function oneColorVersion(children){
+    children.forEach(child =>{
+        child.addEventListener("mousemove", () =>{
+            let opacity = child.style.opacity;
+            if (opacity == ''){
+                opacity = 0.0;
+            }
+
+            if (opacity < 1){
+                child.style.backgroundColor = 'black';
+                opacity = parseFloat(opacity) + 0.1;
+                child.style.opacity = opacity;
+                
+            }
+           // console.log("opacity after: " + opacity);
+
+        })
+    })
+    
+}
 
 /*
-children.forEach(child =>{
-    child.addEventListener("click", () =>{
-        child.style.backgroundColor = 'black';
+function colorVersion(children){
+    children.forEach(child =>{
+        child.addEventListener("mousemove", () =>{
+            let r,g,b;
+            r = randomColor();
+            g = randomColor();
+            b = randomColor();
+            child.style.backgroundColor = `rgb(${r},${g},${b})`;
+        })
     })
-})
-
+}
 */
 
 
-
 function randomColor(){
+
     return Math.floor(Math.random() * 257);
+
 }
 
 const button = document.querySelector('button');
@@ -60,13 +87,18 @@ const button = document.querySelector('button');
 button.addEventListener("click", () =>{
     let value = '';
     value = parseInt(prompt("Text a grind between 1 and 100"));
-    console.log("value typed: " +value)
-    if (value < 1 || value > 100){
+    if (isNaN(value)){
         alert("Please, input a number between 1 and 100");
     }else{
-       chageGrind(value);
+        if ((value < 1 || value > 100)){
+            alert("Please, input a number between 1 and 100");
+        }else{
+           chageGrind(value);
+        }
+        
     }
     
+
 })
 
 document.addEventListener("onload", chageGrind(16));
