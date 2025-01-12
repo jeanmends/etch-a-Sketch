@@ -35,7 +35,8 @@ if (type == 'oneColor'){
 }
 
 */
-oneColorVersion(children);
+//oneColorVersion(children);
+colorVersion(children);
 }
 
       
@@ -61,7 +62,7 @@ function oneColorVersion(children){
     
 }
 
-/*
+
 function colorVersion(children){
     children.forEach(child =>{
         child.addEventListener("mousemove", () =>{
@@ -70,10 +71,22 @@ function colorVersion(children){
             g = randomColor();
             b = randomColor();
             child.style.backgroundColor = `rgb(${r},${g},${b})`;
+
+            let opacity = child.style.opacity;
+            if (opacity == ''){
+                opacity = 0.0;
+            }
+
+            if (opacity < 1){
+               /// child.style.backgroundColor = 'black';
+                opacity = parseFloat(opacity) + 0.1;
+                child.style.opacity = opacity;
+                
+            }
         })
     })
 }
-*/
+
 
 
 function randomColor(){
